@@ -23,7 +23,7 @@ static ssize_t device_write(struct file *filp, const char *buff, size_t len, lof
 /* Char devices files names. */
 #define CALC_FIRST "calc_first"
 #define CALC_SECOND "calc_second"
-#define CALC_OPERND "calc_operand"
+#define CALC_OPERAND "calc_operand"
 #define CALC_RESULT "calc_result"
 
 /* Char devices maximum file size. */
