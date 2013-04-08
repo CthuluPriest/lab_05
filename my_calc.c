@@ -23,7 +23,7 @@ static ssize_t device_write(struct file *filp, const char *buff, size_t len, lof
 /* Char devices files names. */
 #define CALC_FIRST "calc_first"
 #define CALC_SECOND "calc_second"
-#define CALC_OPERATOR "calc_operator"
+#define CALC_OPERND "calc_operand"
 #define CALC_RESULT "calc_result"
 
 /* Char devices maximum file size. */
@@ -33,7 +33,7 @@ static ssize_t device_write(struct file *filp, const char *buff, size_t len, lof
 static char names[][16] = {
         CALC_FIRST,
         CALC_SECOND,
-        CALC_OPERATOR,
+        CALC_OPERAND,
         CALC_RESULT
 };
 
@@ -103,7 +103,7 @@ static ssize_t device_read( struct file *filp, char *buffer, size_t length, loff
                 sprintf(message, "\n%s\n", devices_buffer[0]);
         } else if (strcmp(name, CALC_SECOND) == 0) {
                 sprintf(message, "\n%s\n", devices_buffer[1]);
-        } else if (strcmp(name, CALC_OPERATOR) == 0) {
+        } else if (strcmp(name, CALC_OPERAND) == 0) {
                 sprintf(message, "\n%s\n", devices_buffer[2]);
         } else {
                 a = simple_strtol(devices_buffer[0], &end, 10);
@@ -167,7 +167,7 @@ static ssize_t device_write(struct file *filp, const char *buff, size_t len, lof
                 index = 0;
         } else if (strcmp(name, CALC_SECOND) == 0) {
                 index = 1;
-        } else if (strcmp(name, CALC_OPERATOR) == 0) {
+        } else if (strcmp(name, CALC_OPERAND) == 0) {
                 index = 2;
         } else {
                 index = 3;
