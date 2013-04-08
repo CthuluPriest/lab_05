@@ -8,11 +8,17 @@
 #include <linux/init.h>
 #include <linux/slab.h>
 #include <asm/uaccess.h>
-#include "calc.h"
+#include <linux/fs.h>
+
 
 MODULE_AUTHOR("Serge Staravoitau");
 MODULE_DESCRIPTION("Calculator character device driver");
 MODULE_LICENSE("GPL");
+
+static int device_open(struct inode *inode, struct file *file);
+static int device_release(struct inode *inode, struct file *file);
+static ssize_t device_read(	struct file *filp, char *buffer, size_t length, loff_t * offset);
+static ssize_t device_write(struct file *filp, const char *buff, size_t len, loff_t * off);
 
 /* Char devices files names. */
 #define CALC_FIRST "calc_first"
