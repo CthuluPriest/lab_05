@@ -6,36 +6,17 @@
 
 MODULE_AUTHOR("Serge Staravoitau");
 
+/* Module proc file name. */
+#define CALC_PROC "calc"
 
 /* Module proc files names. */
-#define CALC_RESULT "calc_result"
-#define CALC_FIRST "calc_first"
-#define CALC_SECOND "calc_second"
-#define CALC_OPERAND "calc_operand"
+#define PROCFS_RESULT "calc_result"
+#define PROCFS_FIRST "calc_first"
+#define PROCFS_SECOND "calc_second"
+#define PROCFS_OPERAND "calc_operand"
 
-#define FILE_MAX_SIZE 16
-
-static char names[][16] = {
-	CALC_FIRST,
-	CALC_SECOND,
-	CALC_OPERAND,
-	CALC_RESULT
-};
-
-static char** device_buffer;
-
-/* Indicates if the device is already open */
-static int device_opened = 0;
-
-static char message[32];
-
-static struct file_operations fops = {
-	.owner = THIS_MODULE,
-	.read = device_read,
-	.write = device_write,
-	.open = device_open,
-	.release = device_release
-};
+/* Procfs maximum buffer size. */
+#define PROCFS_MAX_SIZE 16
 
 /* Procs files names. */
 static char names[][16] = {PROCFS_FIRST, PROCFS_SECOND, PROCFS_OPERAND, PROCFS_RESULT};
